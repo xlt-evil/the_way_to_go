@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package mygrpc;
+
+
+//请求体  数字表示参数位置
+message HelloRequest {
+//  类型   参数名 参数的位置
+	string name = 1;
+}
+
+
+// 返回体
+message HelloResponse {
+//  类型   参数名 参数的位置
+	string name = 1;
+}
+
+//注册服务
+service Greeter{
+//当次服务
+	rpc SayHello(HelloRequest) returns (HelloResponse);
+}
+
+//protoc --go_out=plugins=grpc:. helloworld.proto
